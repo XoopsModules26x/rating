@@ -13,48 +13,52 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  */
- 
-if (!defined('XOOPS_ROOT_PATH') || !is_object($GLOBALS["xoopsModule"])) {
-    die();
-}
 
+//if (!defined('XOOPS_ROOT_PATH') || !is_object($GLOBALS["xoopsModule"])) {
+//    die();
+//}
+
+/**
+ * @param  int    $pageId
+ * @param  string $pageName
+ * @return mixed
+ */
 function rating($pageId = 0, $pageName = '')
 {
-	$xoops = Xoops::getInstance();
-	
-    if (!is_object($GLOBALS["xoopsModule"]) || "rating" != $GLOBALS["xoopsModule"]->getVar("dirname")) {
-		$xoops->loadLanguage('main', 'rating');
+    $xoops = Xoops::getInstance();
+
+    if (!is_object($GLOBALS['xoopsModule']) || 'rating' !== $GLOBALS['xoopsModule']->getVar('dirname')) {
+        $xoops->loadLanguage('main', 'rating');
     }
-    
+
     if (is_numeric($pageId)) {
-        $moduleId = $GLOBALS["xoopsModule"]->getVar("mid");
-		
-		$script_name = explode('/', $_SERVER['SCRIPT_NAME']);
-		$pageName = end($script_name);
-		
-		$helper = Xoops_Module_Helper::getHelper('rating');
-		$rating = $helper->getHandlerRatingModules()->getRatingDisplay($pageId, $pageName, $moduleId);
+        $moduleId = $GLOBALS['xoopsModule']->getVar('mid');
+
+        $script_name = explode('/', $_SERVER['SCRIPT_NAME']);
+        $pageName    = end($script_name);
+
+        $helper = Xoops\Module\Helper::getHelper('rating');
+        $ratings = $helper->getHandlerRatingModules()->getRatingDisplay($pageId, $pageName, $moduleId);
     }
-	$script = '(function($){
-					$(document).ready(function(){';
-	foreach($rating as $ratings) {
-					$script .= '$(".rating-'.$ratings['id'].'").jRating({
-						url: "'.XOOPS_URL.'",
-						length : '.$ratings['nb_stars'].',
-						rateMax : '.$ratings['nb_stars'].',
-						pageId : '.$ratings['pageId'].',
-						isDisabled : '.$ratings['hasVoted'].'
-					});';
-	}
-	$script .= '	});
-			   })(jQuery)';
-	$xoops->theme()->addScript('', array('type' => 'text/javascript'), $script);
-	
-    return $rating;
+    $script = '(function($){
+                    $(document).ready(function(){';
+    foreach ($ratings as $rating) {
+        $script .= '$(".rating-' . $rating['id'] . '").jRating({
+                        url: "' . XOOPS_URL . '",
+                        length : ' . $rating['nb_stars'] . ',
+                        rateMax : ' . $rating['nb_stars'] . ',
+                        pageId : ' . $rating['pageId'] . ',
+                        isDisabled : ' . $rating['hasVoted'] . '
+                    });';
+    }
+    $script .= '    });
+               })(jQuery)';
+    $xoops->theme()->addScript('', array('type' => 'text/javascript'), $script);
+
+    return $ratings;
 }
-?>

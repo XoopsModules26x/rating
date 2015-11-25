@@ -1,6 +1,4 @@
 Credits
-
 -------------------
 
-
-Cointin Maxime (Kraven30)
+This module was developed by Cointin Maxime (Kraven30)

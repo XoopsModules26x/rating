@@ -13,31 +13,32 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  */
-define("_AM_RATING_ADD","Add rating");
-define("_AM_RATING_ACTION","Action");
-define("_AM_RATING_MODULES","Modules");
-define("_AM_RATING_PAGE","Page");
-define("_AM_RATING_TITLE","Title");
-define("_AM_RATING_NBSTARS","Number stars");
-define("_AM_RATING_DISPLAY","Display");
-//define("_AM_RATING_STATUS","Status");
-define("_AM_RATING_DELETE","Delete rating");
-define("_AM_RATING_DELETED","Rating deleted");
+define('_AM_RATING_ADD', 'Add rating');
+define('_AM_RATING_ACTION', 'Action');
+define('_AM_RATING_MODULES', 'Modules');
+define('_AM_RATING_PAGE', 'Page');
+define('_AM_RATING_TITLE', 'Title');
+define('_AM_RATING_NBSTARS', 'Number stars');
+define('_AM_RATING_DISPLAY', 'Display');
+//define('_AM_RATING_STATUS','Status');
+define('_AM_RATING_DELETE', 'Delete rating');
+define('_AM_RATING_DELETED', 'Rating deleted');
 
-define("_AM_RATING_EDIT","Edit Rating");
-define("_AM_RATING_LIST", "List of rating");
-define("_AM_RATING_OFF","Display in the form ");
-define("_AM_RATING_ON","Does not display in the form");
-define("_AM_RATING_SAVE","Rating saved");
-define("_AM_RATING_SUREDEL","Are you sure you want to delete this rating?");
+define('_AM_RATING_EDIT', 'Edit Rating');
+define('_AM_RATING_LIST', 'List of rating');
+define('_AM_RATING_OFF', 'Display in the form ');
+define('_AM_RATING_ON', 'Does not display in the form');
+define('_AM_RATING_SAVE', 'Rating saved');
+define('_AM_RATING_SUREDEL', 'Are you sure you want to delete this rating?');
 
 // Alert
-define("_AM_RATING_ALERT_ERROR_TITLE","Errors");
+define('_AM_RATING_ALERT_INFO_TITLE', 'Info');
+define('_AM_RATING_ALERT_ERROR_TITLE', 'Errors');
 
 // Tips
-define("_AM_RATING_TIPS","<ul><li>Add, update or delete rating</li></ul>");
+define('_AM_RATING_TIPS', '<ul><li>Add, update or delete rating</li></ul>');

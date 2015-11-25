@@ -13,7 +13,7 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
@@ -21,22 +21,29 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
+/**
+ * Class RatingCorePreload
+ */
 class RatingCorePreload extends XoopsPreloadItem
 {
-    static function eventCoreIncludeCommonEnd($args)
+    /**
+     * @param $args
+     */
+    public static function eventCoreIncludeCommonEnd($args)
     {
-        $path = dirname(dirname(__FILE__));
-        XoopsLoad::addMap(array(
-            'rating' => $path . '/class/helper.php',
-        ));
+        $path = dirname(__DIR__);
+        XoopsLoad::addMap(array('rating' => $path . '/class/helper.php'));
     }
-	
-	static function eventCoreHeaderAddmeta($args)
+
+    /**
+     * @param $args
+     */
+    public static function eventCoreHeaderAddmeta($args)
     {
-		$path = dirname(dirname(__FILE__));
-		$xoops = Xoops::getInstance();
-		$xoops->theme()->addStylesheet('/modules/rating/css/jRating.jquery.css');
-		$xoops->theme()->addScript('media/jquery/jquery.js');
-		$xoops->theme()->addScript('/modules/rating/js/jRating.jquery.js');
-	}
+        $path  = dirname(__DIR__);
+        $xoops = Xoops::getInstance();
+        $xoops->theme()->addStylesheet('/modules/rating/assets/css/jRating.jquery.css');
+        $xoops->theme()->addScript('media/jquery/jquery.js');
+        $xoops->theme()->addScript('/modules/rating/assets/js/jRating.jquery.js');
+    }
 }

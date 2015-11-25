@@ -13,7 +13,7 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
@@ -26,10 +26,10 @@ define('_MI_RATING_NAME', 'Rating');
 define('_MI_RATING_DSC', 'Provides rating for modules');
 
 //Admin Menu
-define("_MI_RATING_INDEX", "Home");
-define("_MI_RATING_MANAGE", "Manage Rating");
-define("_MI_RATING_ABOUT", "About");
+define('_MI_RATING_INDEX', 'Home');
+define('_MI_RATING_MANAGE', 'Manage Rating');
+define('_MI_RATING_ABOUT', 'About');
 
 //Preferences
-define("_MI_RATING_PAGER", "Number of rating to Display on Admin Side");
-define("_MI_RATING_PAGERDSC", "");
+define('_MI_RATING_PAGER', 'Number of rating to Display on Admin Side');
+define('_MI_RATING_PAGERDSC', '');

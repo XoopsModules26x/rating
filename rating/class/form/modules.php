@@ -13,7 +13,7 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
@@ -21,6 +21,9 @@
 
 defined('XOOPS_ROOT_PATH') or die('Restricted access');
 
+/**
+ * Class RatingModulesForm
+ */
 class RatingModulesForm extends XoopsThemeForm
 {
     /**
@@ -30,22 +33,22 @@ class RatingModulesForm extends XoopsThemeForm
     {
         $xoops = Xoops::getInstance();
 
-        $title = $obj->isNew() ? sprintf(_AM_RATING_ADD) : sprintf(_AM_RATING_EDIT);
-		$nb_stars = $obj->isNew() ? 5 : $obj->getVar('nb_stars');
+        $title    = $obj->isNew() ? sprintf(_AM_RATING_ADD) : sprintf(_AM_RATING_EDIT);
+        $nb_stars = $obj->isNew() ? 5 : $obj->getVar('nb_stars');
 
         parent::__construct($title, 'form', $xoops->getEnv('PHP_SELF'), 'post', true);
-		$modules = new XoopsFormSelect(_AM_RATING_MODULES, "mid", $obj->getVar('mid'));
-		$modules_array = array();
-		$module_handler = $xoops->getHandlerModule();
-		$criteria = new CriteriaCompo(new Criteria('hasmain', 1));
-        $criteria->add(new Criteria('isactive', 1));		
-		$options = $module_handler->getNameList($criteria);       
+        $modules        = new XoopsFormSelect(_AM_RATING_MODULES, 'mid', $obj->getVar('mid'));
+        $modules_array  = array();
+        $moduleHandler = $xoops->getHandlerModule();
+        $criteria       = new CriteriaCompo(new Criteria('hasmain', 1));
+        $criteria->add(new Criteria('isactive', 1));
+        $options = $moduleHandler->getNameList($criteria);
         $modules->addOptionArray($options);
         $this->addElement($modules, true);
         $this->addElement(new XoopsFormText(_AM_RATING_PAGE, 'page', 2, 25, $obj->getVar('page'), '', '', '', true), true);
         $this->addElement(new XoopsFormText(_AM_RATING_TITLE, 'title', 2, 25, $obj->getVar('title'), '', '', '', true), false);
-		$this->addElement(new XoopsFormText(_AM_RATING_NBSTARS, 'nb_stars', 1, 25, $nb_stars, '', '', '', true), true);
-		
+        $this->addElement(new XoopsFormText(_AM_RATING_NBSTARS, 'nb_stars', 1, 25, $nb_stars, '', '', '', true), true);
+
         $this->addElement(new XoopsFormHidden('id', $obj->getVar('id')));
 
         /**

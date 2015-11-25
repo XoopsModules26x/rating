@@ -13,18 +13,19 @@
  * rating module
  *
  * @copyright       The XOOPS Project http://sourceforge.net/projects/xoops/
- * @license         GNU GPL 2 (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
+ * @license         GNU GPL 2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
  * @package         rating
  * @since           2.6.0
  * @author          Cointin Maxime (AKA Kraven30)
  */
 
-include dirname(__FILE__) . '/header.php';
+include __DIR__ . '/header.php';
+//require_once dirname(dirname(dirname(__DIR__))) . '/include/cp_header.php';
 
-$xoops = Xoops::getInstance();
+//$xoops = Xoops::getInstance();
 $xoops->header();
 
-$indexAdmin = new XoopsModuleAdmin();
+$indexAdmin = new \Xoops\Module\Admin();
 $indexAdmin->displayNavigation('index.php');
 $indexAdmin->displayIndex();
 
