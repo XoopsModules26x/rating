@@ -1,0 +1,30 @@
+<h1>Help: Rating</h1>
+
+<h4>Description</h4>
+<p>
+	In you PHP file: 
+	<pre>
+	<strong>XOOPS >= 2.6: ($helper->getConfig('useRating') == 1)
+	XOOPS  < 2.6: XOOPS ($xoopsModuleConfig['useRating'] == 1)
+	
+	$content_id : ID your php page</strong>
+
+	<strong>if 'useRating' is defined in your xoopsversion.php</strong>
+	if (($helper->getConfig('useRating') == 1) and (is_dir('../rating'))){
+	<strong>or dont use 'useRating', if is not defined in your xoopsversion.php</strong>
+	if ((is_dir('../rating'))){
+		require_once XOOPS_ROOT_PATH.'/modules/rating/include/rating.php';
+		$xoopsTpl->assign('ratingPerm', true);
+		$xoopsTpl->assign('rating', rating($content_id));
+	} else {
+		$xoopsTpl->assign('ratingPerm', false);
+	}
+	</pre>
+	<br />
+	In your template file:
+	<pre>
+	&#139;{if $ratingPerm}&#155;
+		&#139;{includeq file="module:rating|rating.html"}&#155;
+	&#139;{/if}&#155;
+	</pre>
+</p>
