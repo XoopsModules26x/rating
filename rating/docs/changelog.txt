@@ -1,4 +1,9 @@
-Version 0.1
--------------------
-Create rating module
+Version 0.2         NOT RELEASED
+--------------------------------------
+- upgrade to latest XOOPS 2.6.0 version (mamba)
+- fix bug with "has voted" check (mamba)
+
+Version 0.1          2013-3-24
+--------------------------------------
+- Original release (Kraven30)
 
